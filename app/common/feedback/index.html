@@ -195,6 +195,18 @@
       transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
     }
 
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: none;
+      padding-right: 12px;
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+
     textarea {
       border-radius: 14px;
       min-height: 120px;
