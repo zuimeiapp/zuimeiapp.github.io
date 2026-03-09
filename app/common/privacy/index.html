@@ -1,1 +1,254 @@
-111
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>隐私政策</title>
+  <meta name="description" content="隐私政策说明" />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg-color: #f5f5f7;
+      --card-bg: #ffffff;
+      --card-border: #e5e5ea;
+      --text-color: #111827;
+      --muted-color: #6b7280;
+      --accent: #2563eb;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #020617;
+        --card-bg: #020617;
+        --card-border: #1e293b;
+        --text-color: #e5e7eb;
+        --muted-color: #9ca3af;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      background: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 24px 16px 32px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 880px;
+      background-color: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 22px 20px 24px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: max(12px, env(safe-area-inset-top)) 12px 24px;
+        align-items: flex-start;
+      }
+
+      main {
+        border-radius: 14px;
+        padding: 18px 14px 20px;
+        box-shadow: none;
+      }
+    }
+
+    header {
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(22px, 3vw, 26px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted-color);
+    }
+
+    section {
+      margin-top: 18px;
+    }
+
+    h2 {
+      margin: 18px 0 6px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 6px 0;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-color);
+    }
+
+    ul {
+      margin: 6px 0 6px 1.2em;
+      padding: 0;
+    }
+
+    li {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-color);
+      margin: 2px 0;
+    }
+
+    .muted {
+      color: var(--muted-color);
+      font-size: 12px;
+    }
+
+    .app-name {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <main aria-labelledby="privacy-title">
+    <header>
+      <h1 id="privacy-title">隐私政策</h1>
+      <p class="subtitle">
+        本隐私政策适用于本应用（以下简称“本应用”或“我们”）提供的全部功能与服务。
+      </p>
+    </header>
+
+    <section>
+      <h2>一、总则</h2>
+      <p>
+        我们非常重视您的个人信息和隐私保护。本隐私政策旨在向您说明，我们在哪些场景下会收集、使用与处理与您相关的信息，以及您就这些信息所享有的权利。
+      </p>
+      <p>
+        除非本隐私政策另有约定，本政策仅适用于本应用本身的功能和服务；如我们在未来对本应用进行重大改版，将视情况更新本隐私政策或在应用内另行说明。
+      </p>
+    </section>
+
+    <section>
+      <h2>二、数据存储与同步</h2>
+      <p>
+        为了提供跨设备同步等能力，本应用会使用 Apple 提供的 iCloud 服务进行数据存储和同步。需要特别说明的是：
+      </p>
+      <ul>
+        <li>与您个人内容直接相关的数据（例如您在应用内创建或编辑的记录、配置等），将<strong>仅存储在您的 iCloud 账户空间中</strong>；</li>
+        <li>这些数据由 Apple 进行存储与加密，我们作为应用开发者<strong>无法直接访问您 iCloud 中的具体明文内容</strong>；</li>
+        <li>本应用自身<strong>不在我们的服务器上存储您的个人数据</strong>，也不会将您的个人数据主动上传到除 iCloud 以外的第三方存储服务。</li>
+      </ul>
+      <p class="muted">
+        提示：您可以通过系统设置管理自己的 iCloud 存储空间及相关权限，例如关闭某个 App 的 iCloud 同步等。
+      </p>
+    </section>
+
+    <section>
+      <h2>三、统计与分析类数据处理</h2>
+      <p>
+        为了持续改进产品体验和服务质量，我们会集成第三方统计与分析 SDK，用于收集与隐私敏感度较低的统计类数据。这类数据主要用于了解产品整体使用情况，而非针对单个具体用户进行画像。
+      </p>
+
+      <h3>1. 友盟统计（Umeng）</h3>
+      <p>
+        我们使用友盟统计（Umeng）SDK，用于统计与产品使用情况相关的非隐私数据，例如：
+      </p>
+      <ul>
+        <li>安装量、活跃用户数、启动次数、日活/月活等整体使用指标；</li>
+        <li>应用版本、系统版本、设备型号等用于分析兼容性和性能的问题；</li>
+        <li>使用时长、功能访问频率等用于产品优化的聚合数据。</li>
+      </ul>
+      <p>
+        在集成友盟 SDK 时，我们会按照其官方文档建议，尽量<strong>弱化或关闭与个体强相关的标识收集能力</strong>（例如设备唯一标识），以降低对隐私的影响；同时，我们不会将友盟统计数据与能够直接识别您身份的信息进行关联。
+      </p>
+
+      <h3>2. Bugly 崩溃统计</h3>
+      <p>
+        为了快速发现并修复应用中的崩溃问题，我们集成了 Bugly SDK 用于收集崩溃日志和相关技术信息，例如：
+      </p>
+      <ul>
+        <li>崩溃堆栈信息、线程信息、错误码、错误发生的模块和大致场景；</li>
+        <li>应用版本号、系统版本号、设备型号等与问题定位相关的环境信息。</li>
+      </ul>
+      <p>
+        Bugly 收集的信息主要用于帮助我们定位问题根因、提升稳定性和兼容性。通常情况下，这些崩溃日志<strong>不包含您的业务内容数据</strong>；如需在特定场景下额外上报信息，我们会在功能内以合适方式另行提示或征求同意。
+      </p>
+    </section>
+
+    <section>
+      <h2>四、信息的共享、转让与公开披露</h2>
+      <p>
+        在正常运营过程中，我们<strong>不会向任何第三方出售您的个人信息</strong>。只有在符合法律法规或得到您明确同意的情况下，我们才可能在以下有限情形下共享或披露与您相关的信息：
+      </p>
+      <ul>
+        <li>事先已获得您的明确授权或同意；</li>
+        <li>为遵守适用的法律法规、法院裁定或行政机关要求；</li>
+        <li>为维护本应用及其用户的合法权益而合理必需的情形（例如打击作弊、排查安全问题等）。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>五、您的权利与选择</h2>
+      <p>
+        鉴于本应用的大部分核心数据仅存储在您的 iCloud 账户中，您可以通过 Apple 提供的相关入口，对自己的数据进行管理，包括但不限于：
+      </p>
+      <ul>
+        <li>在设备上查看、编辑或删除应用内的相关内容；</li>
+        <li>在系统设置中关闭本应用的 iCloud 同步，或删除 iCloud 备份；</li>
+        <li>卸载本应用，以停止后续的数据收集与处理活动（法律法规另有规定或为履行合规义务的情形除外）。</li>
+      </ul>
+      <p>
+        对于友盟统计、Bugly 等第三方 SDK 采集的统计或崩溃信息，您也可以通过系统级的隐私设置、广告跟踪限制等方式，进一步减少可识别度或限制部分能力。
+      </p>
+    </section>
+
+    <section>
+      <h2>六、未成年人保护</h2>
+      <p>
+        如您为未成年人，请在监护人同意和指导下使用本应用及相关服务。若监护人发现我们在未获同意的情况下收集了未成年人的信息，可与我们联系，我们将在核实后及时予以删除或做其他处理。
+      </p>
+    </section>
+
+    <section>
+      <h2>七、本政策的更新</h2>
+      <p>
+        随着业务发展或法律法规的变化，我们可能会不时更新本隐私政策。一般情况下，我们会在应用内以合适的方式提示您（例如弹窗、站内通知或版本更新说明等），以便您及时了解最新版本。
+      </p>
+      <p>
+        在更新生效后，若您继续使用我们的 App，即视为您已阅读、理解并同意受更新后的隐私政策约束；如您不同意相关内容，请及时停止使用本应用。
+      </p>
+    </section>
+
+    <section>
+      <h2>八、联系我们</h2>
+      <p>
+        如您对本隐私政策或与隐私保护相关的事宜有任何疑问、意见或建议，欢迎通过应用内提供的联系方式，或在应用市场的开发者联系渠道与我们取得联系。
+      </p>
+    </section>
+
+    <section>
+      <p class="muted">
+        本隐私政策自页面最后更新之日起生效，并适用于本应用当前版本及后续版本。如本应用中某些功能另有更为详细或特殊的隐私说明，则以该说明为准。
+      </p>
+    </section>
+  </main>
+</body>
+</html>
+
