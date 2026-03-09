@@ -1,1 +1,502 @@
-TEST
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>意见反馈</title>
+  <meta name="description" content="欢迎提出您对产品的意见和建议。" />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg-color: #f5f5f7;
+      --card-bg: #ffffff;
+      --card-border: #e5e5ea;
+      --text-color: #111111;
+      --muted-color: #6b7280;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --danger: #b91c1c;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.08);
+      --radius-lg: 18px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #020617;
+        --card-bg: #020617;
+        --card-border: #1e293b;
+        --text-color: #e5e7eb;
+        --muted-color: #9ca3af;
+        --accent-soft: rgba(37, 99, 235, 0.12);
+        --shadow-soft: 0 18px 55px rgba(15, 23, 42, 0.9);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #e5e7eb 0, #f5f5f7 50%, #dbeafe 100%);
+      color: var(--text-color);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html, body {
+        background: radial-gradient(circle at top left, #020617 0, #020617 35%, #020617 100%);
+      }
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: 880px;
+    }
+
+    .header {
+      text-align: left;
+      margin-bottom: 16px;
+      padding-inline: 4px;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 26px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--muted-color);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: rgba(15, 23, 42, 0.02);
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted-color);
+      max-width: 560px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background-color: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(20px);
+      padding: 20px 22px 18px;
+      display: grid;
+      grid-template-columns: 3fr 2.4fr;
+      gap: 22px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .card {
+        background-color: rgba(15, 23, 42, 0.94);
+        border-color: rgba(51, 65, 85, 0.9);
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 18px 12px 24px;
+      }
+
+      .card {
+        grid-template-columns: 1fr;
+        padding: 18px 16px 16px;
+        gap: 14px;
+      }
+
+      .header {
+        margin-bottom: 12px;
+      }
+    }
+
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .field-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .field-row > .field {
+      flex: 1;
+    }
+
+    @media (max-width: 640px) {
+      .field-row {
+        flex-direction: column;
+      }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-color);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    label span.hint {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--muted-color);
+    }
+
+    input[type="text"],
+    select,
+    textarea {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 9px 12px;
+      font-size: 13px;
+      font-family: inherit;
+      color: var(--text-color);
+      background-color: rgba(248, 250, 252, 0.9);
+      outline: none;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease, background-color 0.16s ease;
+    }
+
+    textarea {
+      border-radius: 14px;
+      min-height: 120px;
+      resize: vertical;
+      padding-block: 10px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        background-color: rgba(15, 23, 42, 0.9);
+        border-color: rgba(71, 85, 105, 0.9);
+      }
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(37, 99, 235, 0.85);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
+      background-color: rgba(255, 255, 255, 0.96);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      input:focus,
+      select:focus,
+      textarea:focus {
+        background-color: rgba(15, 23, 42, 1);
+      }
+    }
+
+    .actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 6px;
+    }
+
+    .email-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      color: #ffffff;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.35);
+      white-space: nowrap;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .email-button span.icon {
+      display: inline-flex;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(191, 219, 254, 0.9);
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      background: rgba(15, 23, 42, 0.12);
+    }
+
+    .email-button:focus-visible {
+      outline: 2px solid #93c5fd;
+      outline-offset: 2px;
+    }
+
+    .email-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 36px rgba(37, 99, 235, 0.45);
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    }
+
+    .email-button:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
+    }
+
+    .side {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      border-left: 1px solid rgba(148, 163, 184, 0.35);
+      padding-left: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .side {
+        border-left: none;
+        border-top: 1px solid rgba(148, 163, 184, 0.28);
+        padding-left: 0;
+        padding-top: 12px;
+        margin-top: 4px;
+      }
+    }
+
+    .side-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .side-text {
+      font-size: 12px;
+      color: var(--muted-color);
+      line-height: 1.6;
+    }
+
+    .meta-list {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 0;
+      font-size: 12px;
+      color: var(--muted-color);
+    }
+
+    .meta-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding-block: 3px;
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.3);
+    }
+
+    .meta-list span.key {
+      color: rgba(148, 163, 184, 0.95);
+    }
+
+    .meta-list span.value {
+      font-variant-numeric: tabular-nums;
+    }
+
+    footer {
+      margin-top: 10px;
+      text-align: right;
+      font-size: 11px;
+      color: var(--muted-color);
+      padding-inline: 4px;
+    }
+  </style>
+</head>
+<body>
+  <main class="shell" aria-labelledby="feedback-title">
+    <header class="header">
+      <div class="title-row">
+        <h1 id="feedback-title">意见反馈</h1>
+        <span class="tag" aria-hidden="true">Feedback</span>
+      </div>
+      <p class="subtitle">
+        您的反馈对我们非常重要。无论是使用体验、功能建议还是问题报告，都欢迎在这里简单描述，我们会认真阅读并评估每一条意见。
+      </p>
+    </header>
+
+    <section class="card" aria-label="反馈表单">
+      <div class="form-section">
+        <div class="field">
+          <label for="name">
+            称呼
+            <span class="hint">选填</span>
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            inputmode="text"
+            autocomplete="name"
+            placeholder="方便称呼您，例如：张先生 / 小王"
+          />
+        </div>
+
+        <div class="field">
+          <label for="category">
+            反馈类型
+          </label>
+          <select id="category" name="category">
+            <option value="">请选择</option>
+            <option value="experience">使用体验</option>
+            <option value="feature">功能建议</option>
+            <option value="bug">问题 / Bug</option>
+            <option value="other">其他</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="content">
+            反馈内容
+            <span class="hint">尽量包含复现步骤或场景</span>
+          </label>
+          <textarea
+            id="content"
+            name="content"
+            placeholder="简单说明您遇到的情况或期望的改进方向。例如：在什么页面、做了什么操作、出现了什么现象。"
+          ></textarea>
+        </div>
+
+        <div class="actions">
+          <a
+            id="email-trigger"
+            class="email-button"
+            href="mailto:feedback@zuimeiapp.com"
+          >
+            <span class="icon">✉</span>
+            <span>通过系统邮箱发送反馈</span>
+          </a>
+        </div>
+      </div>
+
+      <aside class="side" aria-label="反馈提示">
+        <div>
+          <div class="side-title">温馨提示</div>
+          <p class="side-text">
+            为了更快地定位问题，建议您在邮件中补充：操作系统、设备型号、App 版本号，以及尽量完整的操作步骤或截图。
+          </p>
+          <p class="side-text">
+            如果反馈涉及账号或隐私信息，请尽量通过截图打码，避免在邮件正文中直接暴露完整敏感内容。
+          </p>
+        </div>
+
+        <div>
+          <div class="side-title">邮件将发送至</div>
+          <ul class="meta-list" aria-label="反馈邮箱信息">
+            <li>
+              <span class="key">收件人</span>
+              <span class="value">feedback@zuimeiapp.com</span>
+            </li>
+            <li>
+              <span class="key">主题</span>
+              <span class="value">产品意见反馈</span>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      感谢您抽出时间留下反馈，我们会在评估后尽快跟进改进。
+    </footer>
+  </main>
+  <script>
+    (function () {
+      var trigger = document.getElementById("email-trigger");
+      if (!trigger) return;
+
+      var NAME_LABEL = "称呼";
+      var CATEGORY_LABEL = "反馈类型";
+      var CONTENT_LABEL = "反馈内容";
+      var SUBJECT = "产品意见反馈";
+
+      trigger.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        var name = (document.getElementById("name") || {}).value || "";
+        var categorySelect = document.getElementById("category");
+        var categoryLabel = "";
+        if (categorySelect) {
+          var selected = categorySelect.options[categorySelect.selectedIndex];
+          if (selected && selected.value) {
+            categoryLabel = selected.text;
+          }
+        }
+        var content = (document.getElementById("content") || {}).value || "";
+
+        var lines = [];
+
+        if (name.trim()) {
+          lines.push(NAME_LABEL + "：" + name.trim());
+        }
+        if (categoryLabel) {
+          lines.push(CATEGORY_LABEL + "：" + categoryLabel);
+        }
+        if (content.trim()) {
+          lines.push("");
+          lines.push(CONTENT_LABEL + "：");
+          lines.push(content.trim());
+        }
+
+        if (!lines.length) {
+          lines.push("推荐指引：可以在这里简单说明您遇到的问题或期望的改进方向，方便我们更快了解情况。");
+        }
+
+        var body = encodeURIComponent(lines.join("\n"));
+        var subject = encodeURIComponent(SUBJECT);
+        var mailto = "mailto:feedback@zuimeiapp.com?subject=" + subject + "&body=" + body;
+
+        window.location.href = mailto;
+      });
+    })();
+  </script>
+</body>
+</html>
+
